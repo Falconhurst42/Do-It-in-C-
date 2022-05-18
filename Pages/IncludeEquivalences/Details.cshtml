@@ -1,0 +1,31 @@
+@page
+@model DoItInCpp.Pages.IncludeEquivalences.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>IncludeEquivalence</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            C Include
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CInc.Name
+        </dd>
+        <dt class="col-sm-2">
+            CPP Include
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CPPInc.Name
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-cid="@Model.IncludeEquivalence.C_ID" asp-route-cppid="@Model.IncludeEquivalence.CPP_ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

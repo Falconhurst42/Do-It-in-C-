@@ -1,0 +1,50 @@
+﻿@page
+@model MockupsModel
+@{
+    ViewData["Title"] = "Mockups";
+}
+
+<!-- https://getbootstrap.com/docs/5.1/components/carousel/#with-captions -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button bg-dark" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button bg-dark" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button bg-dark" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button bg-dark" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/assets/wireframe.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <h5>Site Mockup</h5>
+        <p>A first draft of the website appearance</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/library_page_wireframe.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <h5>Library Page</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/library_page_wireframe_code.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <h5>Library Page Adding Code</h5>
+      </div>
+    </div> 
+    <div class="carousel-item">
+      <img src="/assets/logo.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-dark">
+        <h5>Placeholder Logo</h5>
+      </div>
+    </div> 
+  </div>
+  <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

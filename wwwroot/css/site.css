@@ -1,0 +1,26 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+textarea.form-control {
+  min-height: 15em;
+}
+
+textarea.form-control#floatingCode {
+  font-family: "Courier New", monospace;
+}

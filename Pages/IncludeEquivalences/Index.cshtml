@@ -1,0 +1,42 @@
+@page
+@model DoItInCpp.Pages.IncludeEquivalences.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IncludeEquivalence[0].C_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncludeEquivalence[0].CPP_ID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.IncludeEquivalence) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPP_ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-cid="@item.C_ID" asp-route-cppid="@item.CPP_ID">Edit</a> |
+                <a asp-page="./Details" asp-route-cid="@item.C_ID" asp-route-cppid="@item.CPP_ID">Details</a> |
+                <a asp-page="./Delete" asp-route-cid="@item.C_ID" asp-route-cppid="@item.CPP_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

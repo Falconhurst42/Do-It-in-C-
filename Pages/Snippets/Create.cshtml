@@ -1,0 +1,55 @@
+@page
+@model DoItInCpp.Pages.Snippets.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Snippet</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Snippet.Name" class="form-control" id="floatingName" placeholder="New Snippet"/>
+                <label for="floatingName">Name</label>
+                <span asp-validation-for="Snippet.Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input asp-for="Snippet.Description" class="form-control" id="floatingDescription" placeholder="Purpose of the snippet"></label>
+                <label for="floatingDescription">Description</label>
+                <span asp-validation-for="Snippet.Description" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <textarea asp-for="Snippet.Code" class="form-control" id="floatingCode" placeholder="#include <"></textarea>
+                <label for="floatingBody">Code</label>
+                <span asp-validation-for="Snippet.Code" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <textarea asp-for="Snippet.Documentation" class="form-control" id="floatingDocumentation" placeholder="Explaination of the code"></textarea>
+                <label for="floatingBody">Documentation</label>
+                <span asp-validation-for="Snippet.Documentation" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Snippet.VersionID" class="control-label"></label>
+                <select asp-for="Snippet.VersionID" class ="form-control" asp-items="ViewBag.VersionID"></select>
+            </div>
+            <div class="form-floating">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

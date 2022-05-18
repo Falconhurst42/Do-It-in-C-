@@ -1,0 +1,32 @@
+@page
+@model DoItInCpp.Pages.IncludeInSnippets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>IncludeInSnippet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IncludeInSnippet.Snippet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IncludeInSnippet.Snippet.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IncludeInSnippet.Include)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IncludeInSnippet.Include.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-snid="@Model.IncludeInSnippet.SnippetID" asp-route-aoid="@Model.IncludeInSnippet.IncludeID">Edit</a> |
+    <a asp-page="./Delete" asp-route-snid="@Model.IncludeInSnippet.SnippetID" asp-route-aoid="@Model.IncludeInSnippet.IncludeID">Delete</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

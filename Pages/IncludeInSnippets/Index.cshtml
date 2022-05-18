@@ -1,0 +1,42 @@
+@page
+@model DoItInCpp.Pages.IncludeInSnippets.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IncludeInSnippet[0].Snippet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncludeInSnippet[0].Include)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.IncludeInSnippet) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Snippet.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Include.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-snid="@item.SnippetID" asp-route-inid="@item.IncludeID">Edit</a> |
+                <a asp-page="./Details" asp-route-snid="@item.SnippetID" asp-route-inid="@item.IncludeID">Details</a> |
+                <a asp-page="./Delete" asp-route-snid="@item.SnippetID" asp-route-inid="@item.IncludeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

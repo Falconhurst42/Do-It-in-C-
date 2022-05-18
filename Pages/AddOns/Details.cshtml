@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model DoItInCpp.Pages.Addons.DetailsModel
+@using DoItInCpp.Utilities;
+
+@{
+    Layout = "_Erin_Layout";
+    ViewData["Title"] = Model.AddOn.Name;
+}
+
+
+<div id="addon-body" class="container p-5 my-4">
+	<h1>@Html.DisplayFor(model => model.AddOn.Name)</h1>
+    @if(Model.AddOn.Tagline != null) {
+	<h4><i>@Html.DisplayFor(model => model.AddOn.Tagline)</i></h4>
+    }
+    <p></p>
+    @foreach (Parsers.Block block in Model.Desc.blocks)
+    {
+        @if(block.GetType() == typeof(Parsers.CodeBlock)) {
+    <pre class="bg-dark prettyprint linenums lang-cpp">@(((Parsers.CodeBlock)block).contents)</pre>
+        } else {
+            // for each line in TextBlock
+            @foreach (var line in ((Parsers.TextBlock)block).contents) {
+                // for each segment of line
+    <p>
+                @foreach(var cont in line.contents) {
+                    if(cont.Key == Parsers.Line.Tag.code) {
+        <code>@cont.Value</code>
+                    } else if(cont.Key == Parsers.Line.Tag.a) {
+        <a href=@cont.Value.Split("](")[1] target="_blank">@cont.Value.Split("](")[0]</a>
+                    } else {
+        @cont.Value
+                    }
+                }
+    </p>
+            }
+        }
+    }
+</div>

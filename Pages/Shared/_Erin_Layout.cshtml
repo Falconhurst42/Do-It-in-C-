@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!--Bootstrap CSS-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+		<!--Styles and Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Overpass+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="~/AzureDotNet.styles.css" asp-append-version="true" />
+
+		<!--Prettify CSS/JS-->
+		<link rel="stylesheet" type="text/css" href="~/google-code-prettify/prettify.css">
+		<link rel="stylesheet" type="text/css" href="~/google-code-prettify/skins/custom.css">
+		<script type="text/javascript" src="~/google-code-prettify/prettify.js"></script>
+
+		<!-- Custom CSS -->
+        <!--<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />-->
+        <link rel="stylesheet" href="~/css/_Erin_Layout.css" asp-append-version="true" />
+		<title>@ViewData["Title"]</title>
+	</head>
+
+
+	<body onload="PR.prettyPrint()">
+		<header class="p-2 sticky-top">
+			<nav class="navbar navbar-expand">
+				<a class ="navbar-brand" asp-page="/Index"><img src="~/assets/dicpplogo.svg" width="120" alt ="do it in c++ logo"></a>
+
+				<form class="rounded w-50 ms-auto" asp-page="/Search" method="get">
+					<div class="input-group">
+						<input type="search" name="SearchString" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+						<input id="search-button" type="submit" value="Search" class="btn btn-outline-secondary"/>
+					</div>
+				</form>
+
+				<ul class ="navbar-nav navbar-expand-lg navbar-dark ms-auto">
+					<li class="nav-item navbar-text me-auto">
+						 <a id="libLink" class="nav-link" href="/Library">Library</a>
+					</li>
+				</ul>
+				</nav>
+		</header>
+		
+		@RenderBody()
+	
+		<footer class="mw-100">
+			<nav class="navbar navbar-expand">
+				<a class ="navbar-brand" href="/Index"><img src="~/assets/dicpplogo.svg" width="120" alt ="do it in c++ logo"></a>
+
+				<form class="rounded w-30 ms-auto" asp-page="/Search" method="get">
+					<div class="input-group">
+						<input type="search" name="SearchString" class=" footerSearch form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+						<input id="search-button" type="submit" value="Search" class="btn btn-outline-secondary"/>
+					</div>
+				</form>
+
+				<ul class ="navbar-nav navbar-expand-lg navbar-dark ms-auto" >
+					<li class="nav-item navbar-text me-auto" id="libLinkFooter" >
+						 <a class="nav-link" href="/Library">Library</a>
+					</li>
+				</ul>
+				</nav>
+		
+		<footer class="subfooter container mw-100 p-0">
+			<div class=" row text-center">
+				<p>Copyright Erin Bell and Ethan Worth 2022</p>
+			</div>
+		</footer>
+	</body>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<!-- <script src="~/lib/bootstrap/dist/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</html>
