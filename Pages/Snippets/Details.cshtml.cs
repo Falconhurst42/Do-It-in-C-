@@ -22,7 +22,6 @@ namespace DoItInCpp.Pages.Snippets
 
         public Snippet Snippet { get; set; }
         public ICollection<Snippet> MoreLike { get; set; }
-        public Parsers.ParsedDescription Desc { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -72,8 +71,6 @@ namespace DoItInCpp.Pages.Snippets
                 .Include(m => m.Categories)
                     .ThenInclude(i => i.Category)
                 .ToList();
-
-            Desc = new Parsers.ParsedDescription(Snippet.Documentation);
 
             return Page();
         }

@@ -1,0 +1,14 @@
+<div class="col">
+    <div class="card">
+        <div class="card-body rounded-3">
+            <h4 class="card-title"><a href="/Snippets/Details/@Snip.ID" class="stretched-link">@Snip.Name</a></h4>
+            <p class="card-text">@Snip.Description</p>
+            <BadgeFooter Snip="@Snip"/>
+        </div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public DoItInCpp.Models.Snippet Snip { get; set; }
+}

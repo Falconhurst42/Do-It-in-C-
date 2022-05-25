@@ -1,0 +1,33 @@
+<div class="badge-footer badge-group">
+    @if(Snip.Includes != null) 
+    {
+        foreach (var inc in Snip.Includes) 
+        {
+    <span class="badge include">
+        <code>
+            &lt;@inc.Include.Name&gt;
+        </code>
+    </span>
+        }
+    }
+    @if(Snip.Categories != null) 
+    {
+        foreach (var inc in Snip.Categories) 
+        {
+    <span class="badge category">
+            @inc.Category.Name
+    </span>
+        }
+    }
+    @if(Snip.Version != null) {
+    <span class="badge version">
+        C++@Snip.Version.Year_XX
+    </span>
+    }
+</div>
+
+
+@code{
+    [Parameter]
+    public DoItInCpp.Models.Snippet Snip { get; set; }
+}

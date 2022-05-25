@@ -85,6 +85,7 @@ code{
 	text-decoration: underline;
 }
 
+/*
 .badge-group .badge,
 .badge-group .badge code {
 	color: #061A1F;
@@ -99,7 +100,7 @@ code{
 .badge-footer .badge{
 	margin-right: 8px !important;
 	font-size: 13px;
-	/* font-size: 15px !important; */
+	/* font-size: 15px !important; *//*
 }
 
 .badge{
@@ -120,7 +121,7 @@ code{
 .version{
 	background-color: #FFD057;
 	color: #061A1F !important; 
-}
+}*/
 
 .add-on{
 	background-color: #DCD7E4;
@@ -346,7 +347,7 @@ footer p{
 	color: #819875; 
 }
 
-.card{
+/*.card{
 	margin: 30px;  
 	background-color: #092228; 
 	color: #F9F5FF; 
@@ -361,7 +362,7 @@ footer p{
 
 .card-title a:hover{
 	color: #819875; 
-}
+}*/
 
 /**************Library Page *****************/
 

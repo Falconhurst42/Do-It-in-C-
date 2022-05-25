@@ -1,0 +1,11 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var snip in Snippets)
+    {
+    <SnippetCard Snip="@snip"/>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<Models.Snippet> Snippets {get; set;}
+}

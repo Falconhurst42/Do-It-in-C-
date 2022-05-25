@@ -1,0 +1,16 @@
+.card{
+	margin: 30px;  
+	background-color: #092228; 
+	color: #F9F5FF; 
+}
+
+.card-title a{
+	color: #B5A4CE; 
+	font-family: 'Mulish'; 
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.card-title a:hover{
+	color: #819875; 
+}

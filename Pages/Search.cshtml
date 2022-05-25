@@ -9,44 +9,7 @@
     @if(Model.CurrentSearch != null) 
     {
     <h2>Search Results For: "@Model.CurrentSearch"</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var snip in Model.Snippets)
-        {
-        <div class="col">
-            <div class="card">
-                <div class="card-body rounded-3">
-                    <h4 class="card-title"><a asp-page="/Snippets/Details" asp-route-id="@snip.ID" class="stretched-link">@snip.Name</a></h4>
-                    <p class="card-text">@snip.Description</p>
-                    <div class=" badge-footer badge-group">
-                        @if(snip.Includes != null) 
-                        {
-                            foreach (var inc in snip.Includes) 
-                            {
-                            <span class="badge include">
-                                <code>
-                                    &lt;@inc.Include.Name&gt;
-                                </code>
-                            </span>
-                            }
-                        }
-                        @if(snip.Categories != null) 
-                        {
-                            foreach (var inc in snip.Categories) 
-                            {
-                        <span class="badge category">
-                            @inc.Category.Name
-                        </span>
-                            }
-                        }
-                        <span class="badge version">
-                            C++@snip.Version.Year_XX
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        }
-    </div>
+    <component type="typeof(DoItInCpp.Components.CardList)" param-Snippets="@Model.Snippets" render-mode="Static" />
     } else {
         <h2>Enter a search term</h2>
     }

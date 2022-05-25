@@ -1,0 +1,37 @@
+<div id="badge-header" class="badge-group mb-3">
+    @if(Snip.Includes != null) 
+    {
+        foreach (var inc in Snip.Includes) 
+        {
+    <a asp-page="/Library" asp-route-groupBy="Include" asp-fragment=@inc.Include.Name>
+        <span class="badge include">
+            <code>
+                &lt;@inc.Include.Name&gt;
+            </code>
+        </span>
+    </a>
+        }
+    }
+    @if(Snip.Categories != null) 
+    {
+        foreach (var inc in Snip.Categories) 
+        {
+    <a asp-page="/Library" asp-route-groupBy="Category" asp-fragment=@inc.Category.Name>
+        <span class="badge category">
+            @inc.Category.Name
+        </span>
+    </a>
+        }
+    }
+    <a asp-page="/Library" asp-route-groupBy="Version" asp-fragment=@("C++" + Snip.Version.Year_XX)>
+        <span class="badge version">
+            C++@Snip.Version.Year_XX
+        </span>
+    </a>
+</div>
+
+
+@code{
+    [Parameter]
+    public DoItInCpp.Models.Snippet Snip { get; set; }
+}

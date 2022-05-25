@@ -17,43 +17,6 @@
     @foreach (var cat in Model.SnippetGroups)
     {
     <h2 id=@(cat.Key.Replace(' ', '-'))>@cat.Key</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var snip in cat.Value)
-        {
-        <div class="col">
-            <div class="card">
-                <div class="card-body rounded-3">
-                    <h4 class="card-title"><a asp-page="/Snippets/Details" asp-route-id="@snip.ID" class="stretched-link">@snip.Name</a></h4>
-                    <p class="card-text">@snip.Description</p>
-                    <div class=" badge-footer badge-group">
-                        @if(snip.Includes != null) 
-                        {
-                            foreach (var inc in snip.Includes) 
-                            {
-                        <span class="badge include">
-                            <code>
-                                &lt;@inc.Include.Name&gt;
-                            </code>
-                        </span>
-                            }
-                        }
-                        @if(snip.Categories != null) 
-                        {
-                            foreach (var inc in snip.Categories) 
-                            {
-                        <span class="badge category">
-                                @inc.Category.Name
-                        </span>
-                            }
-                        }
-                        <span class="badge version">
-                            C++@snip.Version.Year_XX
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        }
-    </div>
+    <component type="typeof(DoItInCpp.Components.CardList)" param-Snippets="@cat.Value" render-mode="Static" />
     }
 </div>

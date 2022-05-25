@@ -1,13 +1,19 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json.Serialization;
 using DoItInCpp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<DoItInCppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DoItInCppContext")));
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
@@ -32,6 +38,12 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+
+    // 👇 Add this line
+    endpoints.MapBlazorHub();
+});
 
 app.Run();

@@ -1,0 +1,33 @@
+@foreach (Utilities.Parsers.Block block in Desc.blocks)
+{
+    @if(block.GetType() == typeof(Utilities.Parsers.CodeBlock)) {
+        Utilities.Parsers.CodeBlock conv = (Utilities.Parsers.CodeBlock)block;
+<pre class="bg-dark prettyprint linenums lang-cpp">@conv.contents</pre>
+    } else {
+        // for each line in TextBlock
+        @foreach (var line in ((Utilities.Parsers.TextBlock)block).contents) {
+            // for each segment of line
+<p>
+            @foreach(var cont in line.contents) {
+                if(cont.Key == Utilities.Parsers.Line.Tag.code) {
+    <code>@cont.Value</code>
+                } else if(cont.Key == Utilities.Parsers.Line.Tag.a) {
+    <a href=@cont.Value.Split("](")[1] target="_blank">@cont.Value.Split("](")[0]</a>
+                } else {
+    @cont.Value
+                }
+            }
+</p>
+        }
+    }
+}
+
+@code{
+    [Parameter]
+    public string Description {get; set;}
+    private Utilities.Parsers.ParsedDescription Desc;
+
+    protected override void OnInitialized() {
+        Desc = new Utilities.Parsers.ParsedDescription(Description);
+    }
+}

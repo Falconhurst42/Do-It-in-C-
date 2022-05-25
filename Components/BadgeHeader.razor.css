@@ -1,0 +1,25 @@
+.badge,
+.badge code {
+	color: #061A1F;
+	font-weight: 300;
+}
+
+.badge{
+	margin: 3px;
+	font-family: var(--bs-font-monospace);
+	margin-right: 15px !important;
+	font-size: 17px;
+}
+
+.include{
+	background-color: #859875;
+}
+
+.category{
+	background-color: #5c89dc;
+}
+
+.version{
+	background-color: #FFD057;
+	color: #061A1F !important; 
+}

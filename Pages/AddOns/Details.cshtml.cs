@@ -21,7 +21,6 @@ namespace DoItInCpp.Pages.Addons
         }
 
         public AddOn AddOn { get; set; }
-        public Parsers.ParsedDescription Desc { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,8 +35,6 @@ namespace DoItInCpp.Pages.Addons
             {
                 return NotFound();
             }
-
-            Desc = new Parsers.ParsedDescription(AddOn.Description);
 
             return Page();
         }
