@@ -1,6 +1,6 @@
 # Do-It-in-C-
 Do It In C++ is an online code repisitory aimed at providing curated solutions to common C++ problems.
 
-The site was developed by Ethan Worth using ASP.NEt EFCore 6.0
+The site backend is developed by Ethan Worth using ASP.NET EFCore 6.0 (RazorPages and Blazor Components)
 
-Site design by Erin Bell
+Site appearance designed by Erin Bell
