@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DoItInCpp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
-    public class DoItInCppContext : DbContext
+    public class DoItInCppContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
         public DoItInCppContext (DbContextOptions<DoItInCppContext> options)
             : base(options)
@@ -25,6 +27,8 @@ using DoItInCpp.Models;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<AddOn>().ToTable("AddOn");
             modelBuilder.Entity<AddOnInSnippet>().ToTable("AddOnInSnippet");
             modelBuilder.Entity<Include>().ToTable("Include");

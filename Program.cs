@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json.Serialization;
@@ -11,9 +12,8 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<DoItInCppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DoItInCppContext")));
-
-builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddDefaultIdentity<IdentityUser<int>>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DoItInCppContext>();
 
 var app = builder.Build();
 
@@ -37,12 +37,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapRazorPages();
 
-    // 👇 Add this line
     endpoints.MapBlazorHub();
 });
 
