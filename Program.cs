@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using DoItInCpp.Models;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
+var temp = builder.Configuration["ConnectionStrings"];
+
 builder.Services.AddDbContext<DoItInCppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DoItInCppContext")));
 builder.Services.AddDefaultIdentity<IdentityUser<int>>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole<int>>()
     .AddEntityFrameworkStores<DoItInCppContext>();
+
+builder.Services.AddControllers(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+                     .RequireAuthenticatedUser()
+                     .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
 
 var app = builder.Build();
 

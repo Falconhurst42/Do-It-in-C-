@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using DoItInCpp.Models;
 
 namespace DoItInCpp.Pages
 {
 
+    [AllowAnonymous]
     public class LibraryModel : PageModel
     {
         private readonly DoItInCppContext _context;
